@@ -7,7 +7,7 @@ import { useAccount } from "wagmi";
 import { twMerge } from "tailwind-merge";
 
 export default function Inbox() {
-  const { receivedMessages, isLoading, isPending } = useReceivedMessages();
+  const { receivedMessages, isLoading } = useReceivedMessages();
   const { isConnected } = useAccount();
 
   return (
@@ -34,7 +34,7 @@ export default function Inbox() {
             />
           ))}
         </div>
-      ) : isLoading || isPending ? (
+      ) : isLoading ? (
         <div className="flex flex-col gap-y-4">
           <MessageCardSkeleton />
           <MessageCardSkeleton />
