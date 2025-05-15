@@ -9,9 +9,8 @@ export default function useSentMessages() {
   const {
     data: sentMessages,
     isLoading,
-    isPending,
     error,
-    refetch
+    refetch,
   } = useQuery({
     queryKey: ["sentMessages", address],
     queryFn: async () => {
@@ -21,5 +20,5 @@ export default function useSentMessages() {
     enabled: !!address,
   });
 
-  return { sentMessages, isLoading, isPending, error, refetch };
+  return { sentMessages, isLoading, error, refetch };
 }

@@ -9,7 +9,6 @@ export default function useReceivedMessages() {
   const {
     data: receivedMessages,
     isLoading,
-    isPending,
     error,
     refetch,
   } = useQuery({
@@ -21,5 +20,5 @@ export default function useReceivedMessages() {
     enabled: !!address,
   });
 
-  return { receivedMessages, isLoading, isPending, error, refetch };
+  return { receivedMessages, isLoading, error, refetch };
 }
