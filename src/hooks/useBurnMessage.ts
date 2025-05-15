@@ -5,9 +5,12 @@ import { config } from "@/config/wagmi";
 import { waitForTransactionReceipt } from "@wagmi/core";
 import { deleteMessageAndNFT } from "@/lib/actions";
 import { toast } from "sonner";
+import useReceivedMessages from "./useReceivedMessages";
 
 export default function useBurnMessage() {
-  const { writeContractAsync, isPending } = useWriteContract();
+  const { writeContractAsync } = useWriteContract();
+  const { refetch: refetchReceivedMessages } = useReceivedMessages();
+
 
   const burnMessage = async (tokenId: number) => {
     try {
@@ -22,6 +25,8 @@ export default function useBurnMessage() {
 
       if (receipt.status === "success") {
         await deleteMessageAndNFT(tokenId);
+
+        await refetchReceivedMessages();
         toast.success("Message burned successfully");
       }
     } catch (error) {
@@ -30,5 +35,5 @@ export default function useBurnMessage() {
     }
   };
 
-  return { burnMessage, isPending };
+  return { burnMessage };
 }

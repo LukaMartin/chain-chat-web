@@ -7,9 +7,11 @@ import { Address, decodeEventLog } from "viem";
 import { Message } from "@/lib/types";
 import { updateMessage } from "@/lib/actions";
 import { toast } from "sonner";
+import useReceivedMessages from "./useReceivedMessages";
 
 export default function useReplyToMessage() {
-  const { writeContractAsync, isPending } = useWriteContract();
+  const { writeContractAsync } = useWriteContract();
+  const { refetch: refetchReceivedMessages } = useReceivedMessages();
 
   const handleTransactionSubmitted = async (txHash: string) => {
     await new Promise((resolve) => setTimeout(resolve, 5000));
@@ -57,6 +59,7 @@ export default function useReplyToMessage() {
 
       await handleTransactionSubmitted(hash);
 
+      await refetchReceivedMessages();
       toast.success("Reply sent successfully");
     } catch (error) {
       console.error(error);
@@ -64,5 +67,5 @@ export default function useReplyToMessage() {
     }
   };
 
-  return { replyToMessage, isPending };
+  return { replyToMessage };
 }
