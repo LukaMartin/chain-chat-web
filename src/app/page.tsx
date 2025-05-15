@@ -1,7 +1,9 @@
 import MessageContainer from "@/components/message-container";
 
 type HomeProps = {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{
+    tab: string;
+  }>;
 };
 
 export default async function Home({ searchParams }: HomeProps) {
