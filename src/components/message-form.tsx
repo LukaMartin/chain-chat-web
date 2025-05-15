@@ -59,7 +59,7 @@ export default function MessageForm() {
         placeholder="0x..."
         name="to"
         id="to"
-        className="bg-card border border-card-hover rounded-lg p-2 text-white/80 outline-none focus:ring-1 focus:ring-card-hover placeholder:text-[15px]"
+        className="bg-card border border-card-hover rounded-lg px-3 py-2 text-white/80 outline-none focus:ring-1 focus:ring-card-hover placeholder:text-[15px]"
         autoComplete="off"
         value={walletAddress}
         onChange={(e) => setWalletAddress(e.target.value)}
@@ -73,7 +73,7 @@ export default function MessageForm() {
           placeholder="Type your message..."
           name="message"
           id="message"
-          className="h-48 w-full bg-card border border-card-hover rounded-lg p-2 text-white/80 outline-none focus:ring-1 focus:ring-card-hover placeholder:text-[15px]"
+          className="h-48 w-full bg-card border border-card-hover rounded-lg p-3 text-white/80 outline-none focus:ring-1 focus:ring-card-hover placeholder:text-[15px]"
           autoComplete="off"
           value={message}
           onChange={(e) => setMessage(e.target.value)}

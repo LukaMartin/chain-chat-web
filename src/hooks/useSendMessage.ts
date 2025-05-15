@@ -7,9 +7,11 @@ import { Address, decodeEventLog } from "viem";
 import { Message } from "@/lib/types";
 import { addMessage } from "@/lib/actions";
 import { toast } from "sonner";
+import useSentMessages from "./useSentMessages";
 
 export default function useSendMessage() {
-  const { writeContractAsync, isPending } = useWriteContract();
+  const { writeContractAsync } = useWriteContract();
+  const { refetch: refetchSentMessages } = useSentMessages();
 
 
   const handleTransactionSubmitted = async (txHash: string) => {
@@ -58,6 +60,7 @@ export default function useSendMessage() {
 
       await handleTransactionSubmitted(hash);
 
+      await refetchSentMessages();
       toast.success("Message sent successfully");
     } catch (error) {
       console.error(error);
@@ -65,5 +68,5 @@ export default function useSendMessage() {
     }
   };
 
-  return { sendMessage, isPending };
+  return { sendMessage };
 }

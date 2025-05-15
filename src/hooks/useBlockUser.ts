@@ -5,9 +5,11 @@ import { config } from "@/config/wagmi";
 import { waitForTransactionReceipt } from "@wagmi/core";
 import { deleteMessageAndNFT } from "@/lib/actions";
 import { toast } from "sonner";
+import useReceivedMessages from "./useReceivedMessages";
 
 export default function useBlockUser() {
   const { writeContractAsync } = useWriteContract();
+  const { refetch: refetchReceivedMessages } = useReceivedMessages();
 
   const blockUser = async (tokenId: number) => {
     try {
@@ -22,6 +24,8 @@ export default function useBlockUser() {
 
       if (receipt.status === "success") {
         await deleteMessageAndNFT(tokenId);
+
+        await refetchReceivedMessages();
         toast.success("User blocked successfully");
       }
     } catch (error) {

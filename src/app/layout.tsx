@@ -32,7 +32,7 @@ export default async function RootLayout({
           {children}
         </AppKitContextProvider>
         <Toaster
-          position="bottom-right"
+          position="top-right"
           toastOptions={{
             style: {
               background: "#1f1f1f",

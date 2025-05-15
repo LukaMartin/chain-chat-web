@@ -3,7 +3,6 @@
 import { createClient } from "@/supabase/server";
 import { ChainChatNFT, Message } from "./types";
 import { getNFTDetails } from "./getNFTDetails";
-import { revalidatePath } from "next/cache";
 
 export async function addMessage(message: Message) {
   const supabase = await createClient();
@@ -14,6 +13,7 @@ export async function addMessage(message: Message) {
     receiver: message.to,
     message: message.message,
     timestamp: Number(message.timestamp),
+    viewed: false,
   });
 
   if (error) {
@@ -29,9 +29,6 @@ export async function addMessage(message: Message) {
       currentOwner: message.to,
     });
   }
-
-  revalidatePath("/?tab=inbox");
-  revalidatePath("/?tab=sent");
 }
 
 export async function addNFT(nft: ChainChatNFT) {
@@ -93,6 +90,7 @@ export async function updateMessage(reply: Message) {
       receiver: reply.to,
       message: reply.message,
       timestamp: Number(reply.timestamp),
+      viewed: false,
     })
     .eq("token_id", reply.tokenId);
 
@@ -109,9 +107,6 @@ export async function updateMessage(reply: Message) {
       currentOwner: reply.to,
     });
   }
-
-  revalidatePath("/?tab=inbox");
-  revalidatePath("/?tab=sent");
 }
 
 export async function updateNFT(nft: ChainChatNFT) {
@@ -153,7 +148,18 @@ export async function deleteMessageAndNFT(tokenId: number) {
     console.error(messageError);
     throw new Error(messageError.message);
   }
+}
 
-  revalidatePath("/?tab=inbox");
-  revalidatePath("/?tab=sent");
+export async function updateMessageViewed(tokenId: number) {
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from("chain_chat_messages")
+    .update({ viewed: true })
+    .eq("token_id", tokenId);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
 }
