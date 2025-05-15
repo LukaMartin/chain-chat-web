@@ -15,3 +15,15 @@
     @apply hover:cursor-pointer;
   }
 }
+
+::-webkit-scrollbar {
+  @apply w-2.5 h-2.5;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-card-hover border-[1px] border-transparent border-solid bg-clip-padding rounded-xs;
+}

@@ -4,28 +4,37 @@ import useReceivedMessages from "@/hooks/useReceivedMessages";
 import MessageCard from "./message-card";
 import MessageCardSkeleton from "./message-card-skeleton";
 import { useAccount } from "wagmi";
+import { twMerge } from "tailwind-merge";
 
 export default function Inbox() {
-  const { receivedMessages, isLoading } = useReceivedMessages();
+  const { receivedMessages, isLoading, isPending } = useReceivedMessages();
   const { isConnected } = useAccount();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full">
       <h2 className="text-2xl font-bold mb-6.5 pt-[3px]">Inbox</h2>
       {receivedMessages && receivedMessages.length > 0 ? (
-        <div className="flex flex-col gap-y-4">
+        <div
+          className={twMerge(
+            `flex flex-col gap-y-4 max-h-[480px] overflow-y-auto ${
+              receivedMessages && receivedMessages.length > 4 && "pr-3"
+            }`
+          )}
+        >
           {receivedMessages?.map((message) => (
             <MessageCard
               key={message.id}
               tokenId={Number(message.token_id)}
               sender={message.sender}
+              receiver={message.receiver}
               message={message.message}
               timestamp={Number(message.timestamp)}
               isReceived={true}
+              viewed={message.viewed}
             />
           ))}
         </div>
-      ) : isLoading ? (
+      ) : isLoading || isPending ? (
         <div className="flex flex-col gap-y-4">
           <MessageCardSkeleton />
           <MessageCardSkeleton />
