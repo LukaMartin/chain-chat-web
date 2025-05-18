@@ -38,7 +38,7 @@ export default function MessageForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col w-[92%] md:w-3/4 lg:w-2/3 mx-auto  mb-6 md:mb-0 rounded-xl p-6 border border-card-hover"
+      className="flex flex-col w-[92%] md:w-3/4 lg:w-2/3 mx-auto [@media(max-height:700px)]:mb-10 md:mb-0 rounded-xl p-6 border border-card-hover"
     >
       <label htmlFor="to" className="mb-2">
         To
