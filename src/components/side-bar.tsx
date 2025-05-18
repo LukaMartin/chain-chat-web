@@ -1,7 +1,8 @@
 "use client";
 
 import MenuButton from "./menu-button";
-import { LuInbox, LuSend, LuCirclePlus, LuMail } from "react-icons/lu";
+import { LuInbox, LuSend, LuMail } from "react-icons/lu";
+import { ImPencil } from "react-icons/im";
 import useViewMessage from "@/hooks/useViewMessage";
 
 const menuButtons = [
@@ -14,7 +15,7 @@ const menuButtons = [
     text: "Sent",
   },
   {
-    icon: <LuCirclePlus />,
+    icon: <ImPencil />,
     text: "New Message",
   },
 ];

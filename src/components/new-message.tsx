@@ -19,7 +19,9 @@ export default function NewMessage() {
         New Message
       </h2>
       {isConnected ? (
-        <MessageForm />
+        <div className="pb-20 md:pb-0">
+          <MessageForm />
+        </div>
       ) : (
         <p className="text-white/50 -mt-1">
           Connect your wallet to send a message

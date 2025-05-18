@@ -53,6 +53,7 @@ export default function useReplyToMessage() {
         abi: chainChatAbi,
         functionName: "reply",
         args: [BigInt(tokenId), message],
+        type: "eip1559",
       });
 
       await waitForTransactionReceipt(config, { hash: hash });

@@ -16,7 +16,7 @@ export default function Inbox() {
   const isMobile = useMediaQuery("(max-width: 760px)");
 
   return (
-    <div className="flex flex-col h-full px-4 md:px-0">
+    <div className="flex flex-col h-full px-4 md:px-0 pb-20 md:pb-0">
       <div
         className={twMerge(
           "flex items-center justify-between",
@@ -24,9 +24,9 @@ export default function Inbox() {
         )}
       >
         <div className="flex items-center gap-x-3">
-          <h2 className="text-2xl font-bold mb-5.5 mt-5">Inbox</h2>
+          <h2 className="text-2xl font-bold my-5 md:my-4">Inbox</h2>
           {(unreadCount ?? 0) > 0 && isMobile && (
-            <p className="text-xs text-primary bg-primary/15 rounded-full px-2 py-1 mt-0.5">
+            <p className="mt-[1px] text-xs text-primary bg-primary/15 rounded-full px-2 py-1 aspect-square inline-flex items-center justify-center">
               {unreadCount}
             </p>
           )}
@@ -37,7 +37,7 @@ export default function Inbox() {
       {receivedMessages && receivedMessages.length > 0 ? (
         <div
           className={twMerge(
-            "flex flex-col gap-y-3 md:gap-y-4 max-h-full md:max-h-[470px] overflow-y-auto",
+            "flex flex-col gap-y-3 md:gap-y-4 md:max-h-[470px] overflow-y-auto",
             receivedMessages &&
               receivedMessages.length > 4 &&
               "md:-mr-4 md:pr-2"
