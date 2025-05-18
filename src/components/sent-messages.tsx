@@ -12,20 +12,20 @@ export default function SentMessages() {
   const { isConnected } = useAccount();
 
   return (
-    <div className="flex flex-col h-full px-4 md:px-0">
+    <div className="flex flex-col h-full px-4 md:px-0 pb-20 md:pb-0">
       <div
         className={twMerge(
           `flex items-center justify-between`,
           "max-md:z-50 max-md:sticky max-md:top-24 max-md:bg-background"
         )}
       >
-        <h2 className="text-2xl font-bold mb-5.5 mt-5">Sent</h2>
+        <h2 className="text-2xl font-bold my-5 md:my-4">Sent</h2>
         <MobileNewMessageButton />
       </div>
       {sentMessages && sentMessages.length > 0 ? (
         <div
           className={twMerge(
-            "flex flex-col gap-y-3 md:gap-y-4 max-h-full md:max-h-[470px] overflow-y-auto",
+            "flex flex-col gap-y-3 md:gap-y-4 md:max-h-[470px] overflow-y-auto",
             sentMessages && sentMessages.length > 4 && "md:-mr-4 md:pr-2"
           )}
         >
