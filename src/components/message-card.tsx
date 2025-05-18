@@ -1,7 +1,6 @@
 "use client";
 
 import convertTimestamp from "@/lib/convertTimestamp";
-import { updateMessageViewed } from "@/lib/actions";
 import { formatAddress } from "@/lib/formatAddress";
 import { useState } from "react";
 import { FaReply, FaFire } from "react-icons/fa";
@@ -11,6 +10,7 @@ import MessageDialog from "./message-dialog";
 import BurnDialog from "./burn-dialog";
 import BlockDialog from "./block-dialog";
 import { twMerge } from "tailwind-merge";
+import useViewMessage from "@/hooks/useViewMessage";
 
 type MessageCardProps = {
   tokenId: number;
@@ -36,13 +36,14 @@ export default function MessageCard({
   const [isBlockDialogOpen, setIsBlockDialogOpen] = useState(false);
   const [showReplySection, setShowReplySection] = useState(false);
   const [isViewed, setIsViewed] = useState(viewed);
+  const { markAsRead } = useViewMessage();
 
   const handleCardClick = async () => {
     setShowReplySection(false);
     setIsReplyDialogOpen(true);
     if (!viewed && isReceived) {
       setIsViewed(true);
-      await updateMessageViewed(tokenId);
+      markAsRead(tokenId);
     }
   };
 
@@ -52,7 +53,7 @@ export default function MessageCard({
     setIsReplyDialogOpen(true);
     if (!viewed && isReceived) {
       setIsViewed(true);
-      await updateMessageViewed(tokenId);
+      markAsRead(tokenId);
     }
   };
 
@@ -61,7 +62,7 @@ export default function MessageCard({
     setIsBurnDialogOpen(true);
     if (!viewed && isReceived) {
       setIsViewed(true);
-      await updateMessageViewed(tokenId);
+      markAsRead(tokenId);
     }
   };
 
@@ -70,7 +71,7 @@ export default function MessageCard({
     setIsBlockDialogOpen(true);
     if (!viewed && isReceived) {
       setIsViewed(true);
-      await updateMessageViewed(tokenId);
+      markAsRead(tokenId);
     }
   };
 

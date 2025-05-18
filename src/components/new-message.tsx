@@ -8,10 +8,10 @@ export default function NewMessage() {
   const { isConnected } = useAccount();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col h-full overflow-y-auto">
       <h2
         className={twMerge(
-          `text-2xl font-bold mb-9.5 pt-[3px] text-center ${
+          `text-2xl font-bold mb-8 mt-5 text-center ${
             !isConnected && "text-left mb-6.5"
           }`
         )}

@@ -66,7 +66,7 @@ export default function MessageDialog({
             <DialogPanel className="relative w-full max-w-md rounded-xl bg-background border border-card-hover p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0">
               <DialogTitle
                 as="h3"
-                className="text-lg font-medium border-b border-card-hover pb-4 flex items-center"
+                className="text-base md:text-lg font-medium border-b border-card-hover pb-4 flex items-center"
               >
                 Message {isReceived ? "from" : "to"}{" "}
                 {formatAddress(address as Address)}
