@@ -18,7 +18,7 @@ type MessageContainerProps = {
 
 export default function MessageContainer({ tab }: MessageContainerProps) {
   return (
-    <section className="px-4 lg:px-0 mt-12">
+    <section className="px-4 lg:px-0 mt-12 hidden md:block">
       <section className="flex bg-background rounded-xl border border-card-hover h-[625px] max-w-[1024px] w-full mx-auto">
         <SideBar tab={tab} />
         <div className="flex flex-col p-4 w-2/3">

@@ -1,10 +1,10 @@
 "use client";
 
-import SideBarButton from "./side-bar-button";
+import MenuButton from "./menu-button";
 import { LuInbox, LuSend, LuCirclePlus, LuMail } from "react-icons/lu";
 import useViewMessage from "@/hooks/useViewMessage";
 
-const buttons = [
+const menuButtons = [
   {
     icon: <LuInbox />,
     text: "Inbox",
@@ -33,8 +33,8 @@ export default function SideBar({ tab }: SideBarProps) {
         Chat wallet-to-wallet
       </p>
       <div className="flex flex-col gap-y-2 border-t border-card-hover pt-4">
-        {buttons.map((button) => (
-          <SideBarButton
+        {menuButtons.map((button) => (
+          <MenuButton
             key={button.text}
             icon={button.icon}
             text={button.text}

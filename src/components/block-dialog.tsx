@@ -50,7 +50,7 @@ export default function BlockDialog({
             <DialogPanel className="relative w-fit max-w-md rounded-xl bg-background border border-card-hover p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0">
               <DialogTitle
                 as="h3"
-                className="text-lg text-white/90 font-medium border-b border-card-hover pb-4 pt-1"
+                className="text-base md:text-lg text-center md:text-left text-white/90 font-medium border-b border-card-hover pb-4 pt-1"
               >
                 Are you sure you want to block{" "}
                 {formatAddress(sender as Address)}?

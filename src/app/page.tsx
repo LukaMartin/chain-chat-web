@@ -1,6 +1,6 @@
 import MessageContainer from "@/components/message-container";
 import Header from "@/components/header";
-
+import MobileMessageContainer from "@/components/mobile-message-container";
 type HomeProps = {
   searchParams: Promise<{
     tab: string;
@@ -14,6 +14,7 @@ export default async function Home({ searchParams }: HomeProps) {
     <main className="min-h-screen flex flex-col">
       <Header />
       <MessageContainer tab={(tab as string) || "inbox"} />
+      <MobileMessageContainer tab={(tab as string) || "inbox"} />
     </main>
   );
 }
