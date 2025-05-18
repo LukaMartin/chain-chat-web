@@ -41,7 +41,7 @@ export default function Inbox() {
             receivedMessages &&
               receivedMessages.length > 4 &&
               !isMobile &&
-              "pr-3"
+              "-mr-4 pr-2"
           )}
         >
           {receivedMessages?.map((message) => (

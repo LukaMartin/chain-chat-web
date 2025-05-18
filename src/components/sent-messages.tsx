@@ -28,7 +28,7 @@ export default function SentMessages() {
         <div
           className={twMerge(
             "flex flex-col gap-y-3 md:gap-y-4 md:max-h-[470px] overflow-y-auto",
-            sentMessages && sentMessages.length > 4 && !isMobile && "pr-3"
+            sentMessages && sentMessages.length > 4 && !isMobile && "-mr-4 pr-2"
           )}
         >
           {sentMessages?.map((message) => (
