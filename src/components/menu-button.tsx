@@ -39,7 +39,7 @@ export default function MenuButton({
         {text}
         {(count ?? 0) > 0 && isMobile && (
           <div className="absolute -top-2 -right-4 bg-primary rounded-full h-4 w-4 flex items-center justify-center">
-            <span className="text-[10px] text-background font-semibold mr-[1px] leading-none">
+            <span className="text-[10px] text-background font-semibold leading-none">
               {count && count < 100 ? count : "99"}
             </span>
           </div>
