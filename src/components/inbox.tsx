@@ -41,7 +41,10 @@ export default function Inbox() {
             receivedMessages &&
               receivedMessages.length > 4 &&
               !isMobile &&
-              "-mr-4 pr-2"
+              "-mr-4 pr-2",
+            "max-md:max-h-[calc(100vh-700px)] max-md:[&:not(:has(*))]:h-[calc(100vh-700px)]",
+            "max-md:h-[calc(100vh-250px)]",
+            isMobile && "-mr-4 pr-2"
           )}
         >
           {receivedMessages?.map((message) => (

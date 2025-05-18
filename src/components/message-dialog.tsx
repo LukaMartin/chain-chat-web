@@ -52,10 +52,10 @@ export default function MessageDialog({
       <Dialog
         open={isOpen}
         as="div"
-        className="relative z-10 focus:outline-none"
+        className="relative z-60 focus:outline-none"
         onClose={onClose}
       >
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto bg-black/30 backdrop-blur-sm">
+        <div className="fixed inset-0 z-60 w-screen overflow-y-auto bg-black/30 backdrop-blur-sm">
           <motion.div
             className="flex min-h-full items-center justify-center p-4"
             initial={{ opacity: 0 }}
