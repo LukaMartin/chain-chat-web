@@ -6,14 +6,10 @@ import MessageCardSkeleton from "./message-card-skeleton";
 import { useAccount } from "wagmi";
 import { twMerge } from "tailwind-merge";
 import MobileNewMessageButton from "./mobile-new-message-button";
-import { useMediaQuery } from "usehooks-ts";
-import useViewMessage from "@/hooks/useViewMessage";
 
 export default function Inbox() {
   const { receivedMessages, isLoading } = useReceivedMessages();
   const { isConnected } = useAccount();
-  const { unreadCount } = useViewMessage();
-  const isMobile = useMediaQuery("(max-width: 760px)");
 
   return (
     <div className="flex flex-col h-full px-4 md:px-0 pb-20 md:pb-0">
@@ -23,14 +19,7 @@ export default function Inbox() {
           "max-md:z-50 max-md:sticky max-md:top-24 max-md:bg-background"
         )}
       >
-        <div className="flex items-center gap-x-3">
-          <h2 className="text-2xl font-bold my-5 md:my-4">Inbox</h2>
-          {(unreadCount ?? 0) > 0 && isMobile && (
-            <p className="mt-[1px] text-xs text-primary bg-primary/15 rounded-full px-2 py-1 aspect-square inline-flex items-center justify-center">
-              {unreadCount}
-            </p>
-          )}
-        </div>
+        <h2 className="text-2xl font-bold my-5 md:my-4">Inbox</h2>
 
         <MobileNewMessageButton />
       </div>
