@@ -35,10 +35,19 @@ export default function MenuButton({
       )}
     >
       {icon}
-      <span>{text}</span>
+      <span className="relative">
+        {text}
+        {(count ?? 0) > 0 && isMobile && (
+          <div className="absolute -top-2 -right-4 bg-primary rounded-full h-4 w-4 flex items-center justify-center">
+            <span className="text-[10px] text-background font-semibold mr-[1px] leading-none">
+              {count && count < 100 ? count : "99"}
+            </span>
+          </div>
+        )}
+      </span>
       {(count ?? 0) > 0 && !isMobile && (
         <span className="text-xs text-primary bg-primary/15 rounded-full px-2 py-1 ml-auto mr-2">
-          {count}
+          {count && count < 100 ? count : "99"}
         </span>
       )}
     </button>
