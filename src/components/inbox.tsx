@@ -19,8 +19,8 @@ export default function Inbox() {
     <div className="flex flex-col h-full px-4 md:px-0">
       <div
         className={twMerge(
-          `flex items-center justify-between`,
-          isMobile && "z-50 sticky top-24 bg-background"
+          "flex items-center justify-between",
+          "max-md:z-50 max-md:sticky max-md:top-24 max-md:bg-background"
         )}
       >
         <div className="flex items-center gap-x-3">
@@ -37,14 +37,10 @@ export default function Inbox() {
       {receivedMessages && receivedMessages.length > 0 ? (
         <div
           className={twMerge(
-            "flex flex-col gap-y-3 md:gap-y-4 md:max-h-[470px] overflow-y-auto",
+            "flex flex-col gap-y-3 md:gap-y-4 max-h-full md:max-h-[470px] overflow-y-auto",
             receivedMessages &&
               receivedMessages.length > 4 &&
-              !isMobile &&
-              "-mr-4 pr-2",
-            "max-md:max-h-[calc(100vh-700px)] max-md:[&:not(:has(*))]:h-[calc(100vh-700px)]",
-            "max-md:h-[calc(100vh-250px)]",
-            isMobile && "-mr-4 pr-2"
+              "md:-mr-4 md:pr-2"
           )}
         >
           {receivedMessages?.map((message) => (
