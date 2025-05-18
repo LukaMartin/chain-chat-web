@@ -54,7 +54,6 @@ export default function useSendMessage() {
         abi: chainChatAbi,
         functionName: "sendMessage",
         args: [to, message],
-        type: "eip1559",
       });
 
       await waitForTransactionReceipt(config, { hash: hash });
