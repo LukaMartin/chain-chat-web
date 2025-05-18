@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <header
-      className={`flex items-center justify-between max-w-[1024px] px-4 lg:px-0 mx-auto w-full h-24 ${
+      className={`flex items-center justify-between max-w-[1000px] xl:max-w-[1024px] px-4 lg:px-0 mx-auto w-full h-24 ${
         isMobile && "border-b border-card-hover z-50 sticky top-0 bg-background"
       }`}
     >
