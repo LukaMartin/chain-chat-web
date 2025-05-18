@@ -18,14 +18,19 @@ type MessageContainerProps = {
 
 export default function MessageContainer({ tab }: MessageContainerProps) {
   return (
-    <section className="flex bg-background rounded-xl border border-card-hover h-[620px] w-[760px] lg:w-[1024px] max-w-[95%] mx-auto">
-      <SideBar tab={tab} />
-      <div className="flex flex-col p-4 mt-2 w-2/3">
-        <DynamicConnectButton />
-        {tab === "inbox" && <Inbox />}
-        {tab === "sent" && <SentMessages />}
-        {tab === "new" && <NewMessage />}
-      </div>
+    <section className="px-4 lg:px-0 mt-12">
+      <section className="flex bg-background rounded-xl border border-card-hover h-[625px] max-w-[1024px] w-full mx-auto">
+        <SideBar tab={tab} />
+        <div className="flex flex-col p-4 w-2/3">
+          <div className="flex justify-end border-b border-card-hover pb-4">
+            <DynamicConnectButton />
+          </div>
+
+          {tab === "inbox" && <Inbox />}
+          {tab === "sent" && <SentMessages />}
+          {tab === "new" && <NewMessage />}
+        </div>
+      </section>
     </section>
   );
 }

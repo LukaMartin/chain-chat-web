@@ -12,7 +12,7 @@ export default function Inbox() {
 
   return (
     <div className="flex flex-col h-full">
-      <h2 className="text-2xl font-bold mb-6.5 pt-[3px]">Inbox</h2>
+      <h2 className="text-2xl font-bold mb-5.5 mt-5">Inbox</h2>
       {receivedMessages && receivedMessages.length > 0 ? (
         <div
           className={twMerge(

@@ -12,7 +12,7 @@ export default function SentMessages() {
 
   return (
     <div className="flex flex-col h-full">
-      <h2 className="text-2xl font-bold mb-6.5 pt-[3px]">Sent</h2>
+      <h2 className="text-2xl font-bold mb-5.5 mt-5">Sent</h2>
       {sentMessages && sentMessages.length > 0 ? (
         <div
           className={twMerge(
