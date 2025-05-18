@@ -163,3 +163,20 @@ export async function updateMessageViewed(tokenId: number) {
     throw new Error(error.message);
   }
 }
+
+export async function getUnreadCount(address: string) {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("chain_chat_messages")
+    .select("*")
+    .eq("receiver", address)
+    .eq("viewed", false);
+
+  if (error) {
+    console.error(error);
+    throw new Error(error.message);
+  }
+
+  return data.length;
+}

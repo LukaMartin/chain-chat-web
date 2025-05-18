@@ -6,12 +6,14 @@ type SideBarButtonProps = {
   icon: React.ReactNode;
   text: string;
   isActive: boolean;
+  count?: number | null;
 };
 
 export default function SideBarButton({
   icon,
   text,
   isActive,
+  count,
 }: SideBarButtonProps) {
   const router = useRouter();
 
@@ -29,6 +31,11 @@ export default function SideBarButton({
     >
       {icon}
       <span>{text}</span>
+      {(count ?? 0) > 0 && (
+        <span className="text-xs text-primary bg-primary/15 rounded-full px-2 py-1 ml-auto mr-2">
+          {count}
+        </span>
+      )}
     </button>
   );
 }

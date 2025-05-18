@@ -1,5 +1,8 @@
+"use client";
+
 import SideBarButton from "./side-bar-button";
-import { LuInbox, LuSend, LuCirclePlus } from "react-icons/lu";
+import { LuInbox, LuSend, LuCirclePlus, LuMail } from "react-icons/lu";
+import useViewMessage from "@/hooks/useViewMessage";
 
 const buttons = [
   {
@@ -21,20 +24,26 @@ type SideBarProps = {
 };
 
 export default function SideBar({ tab }: SideBarProps) {
+  const { unreadCount } = useViewMessage();
+
   return (
     <div className="flex flex-col w-1/3 border-r border-card-hover p-4">
-      <div className="mb-8 pl-2 pt-2">
-        <h3 className="text-xl font-bold mb-4">ChainChat</h3>
-        <p className="text-sm text-white/50">Fully on-chain</p>
-      </div>
-
-      <div className="flex flex-col gap-y-2">
+      <p className="text-white/50 mt-[9px] ml-1.5 pb-[17px] flex items-center gap-x-3">
+        <LuMail />
+        Chat wallet-to-wallet
+      </p>
+      <div className="flex flex-col gap-y-2 border-t border-card-hover pt-4">
         {buttons.map((button) => (
           <SideBarButton
             key={button.text}
             icon={button.icon}
             text={button.text}
             isActive={button.text.toLowerCase().split(" ")[0] === tab}
+            count={
+              button.text.toLowerCase().split(" ")[0] === "inbox"
+                ? unreadCount
+                : null
+            }
           />
         ))}
       </div>
