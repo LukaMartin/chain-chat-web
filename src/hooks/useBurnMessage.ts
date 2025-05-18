@@ -19,6 +19,7 @@ export default function useBurnMessage() {
         abi: chainChatAbi,
         functionName: "burnMessage",
         args: [tokenId],
+        type: "eip1559",
       });
 
       const receipt = await waitForTransactionReceipt(config, { hash: hash });

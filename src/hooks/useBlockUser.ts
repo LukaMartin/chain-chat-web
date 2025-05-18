@@ -18,6 +18,7 @@ export default function useBlockUser() {
         abi: chainChatAbi,
         functionName: "blockUser",
         args: [tokenId],
+        type: "eip1559",
       });
 
       const receipt = await waitForTransactionReceipt(config, { hash: hash });
