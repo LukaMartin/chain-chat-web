@@ -2,6 +2,8 @@
 
 import { useMediaQuery } from "usehooks-ts";
 import ConnectButton from "./connect-button";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const isMobile = useMediaQuery("(max-width: 760px)");
@@ -12,7 +14,14 @@ export default function Header() {
         isMobile && "border-b border-card-hover z-50 sticky top-0 bg-background"
       }`}
     >
-      <p className="text-white text-2xl font-bold">ChainChat</p>
+      <div className="flex items-center gap-2">
+        <Link href="/">
+          <Image src="/logo.svg" alt="logo" width={45} height={45} />
+        </Link>
+        <p className="text-white text-2xl font-bold mb-2 hidden md:block">
+          ChainChat
+        </p>
+      </div>
       {isMobile && <ConnectButton />}
     </header>
   );
